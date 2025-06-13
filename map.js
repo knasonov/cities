@@ -5,8 +5,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // guess possible coordinate column names
-const latKeys = ['lat', 'latitude', 'y'];
-const lonKeys = ['lon', 'lng', 'longitude', 'x'];
+const latKeys = ['lat', 'latitude', 'y', 'geo_lat'];
+const lonKeys = ['lon', 'lng', 'longitude', 'x', 'geo_lon'];
 
 function findCoord(row, keys) {
   for (const k of keys) {
