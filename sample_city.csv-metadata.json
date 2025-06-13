@@ -1,0 +1,7 @@
+{
+  "columns": [
+    {"name": "name", "description": "City name"},
+    {"name": "lat", "description": "Latitude"},
+    {"name": "lon", "description": "Longitude"}
+  ]
+}

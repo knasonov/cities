@@ -1,6 +1,6 @@
 # Cities Map
 
-This project displays Russian cities from `city.csv` on an interactive map.
+This project displays cities from `city.csv` on an interactive map.
 
 ## Usage
 
@@ -11,7 +11,8 @@ This project displays Russian cities from `city.csv` on an interactive map.
    and open `http://localhost:8000/index.html` in your browser.
 
 2. The map will show blue circles for every city in the CSV. Hover over a circle
-to see the available information.
+   to see the available information.
 
-The CSV is loaded dynamically, so you can replace `city.csv` with your own data
-without changing the code.
+3. The CSV should contain at least `lat` and `lon` columns.
+   A sample file `sample_city.csv` with three cities is included for testing.
+4. To test the map, replace `city.csv` with `sample_city.csv`
