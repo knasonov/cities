@@ -16,9 +16,32 @@ function findCoord(row, keys) {
 }
 
 function rowToTooltip(row) {
-  return Object.entries(row)
-    .map(([k, v]) => `<strong>${k}</strong>: ${v}`)
-    .join('<br/>');
+  const region = row.region || '';
+  const city = row.city || '';
+  const pop = row.population || '';
+  return `<strong>region</strong>: ${region}<br/>` +
+         `<strong>city</strong>: ${city}<br/>` +
+         `<strong>population</strong>: ${pop}`;
+}
+
+const entries = [];
+
+function applyFilter() {
+  const minVal = parseInt(document.getElementById('min-pop').value) || 0;
+  const maxInput = document.getElementById('max-pop').value;
+  const maxVal = maxInput === '' ? Infinity : parseInt(maxInput);
+  entries.forEach(e => {
+    const pop = parseInt(e.row.population) || 0;
+    if (pop >= minVal && pop <= maxVal) {
+      if (!map.hasLayer(e.marker)) {
+        e.marker.addTo(map);
+      }
+    } else {
+      if (map.hasLayer(e.marker)) {
+        map.removeLayer(e.marker);
+      }
+    }
+  });
 }
 
 d3.csv('city.csv').then(data => {
@@ -31,8 +54,12 @@ d3.csv('city.csv').then(data => {
         color: 'blue',
         fillColor: 'blue',
         fillOpacity: 0.7
-      }).addTo(map);
+      });
       marker.bindTooltip(rowToTooltip(row), {direction: 'top', sticky: true});
+      entries.push({marker, row});
     }
   });
+  applyFilter();
+  document.getElementById('min-pop').addEventListener('input', applyFilter);
+  document.getElementById('max-pop').addEventListener('input', applyFilter);
 });

@@ -13,6 +13,10 @@
   </style>
 </head>
 <body>
+  <div id="controls" style="position:absolute;top:10px;left:10px;z-index:1000;background:white;padding:4px;font-size:14px;">
+    <label>Min population: <input type="number" id="min-pop" value="0" style="width:80px;"></label>
+    <label>Max population: <input type="number" id="max-pop" style="width:80px;"></label>
+  </div>
   <div id="map"></div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
