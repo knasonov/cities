@@ -21,7 +21,7 @@ function rowToTooltip(row) {
     .join('<br/>');
 }
 
-d3.csv('city.csv').then(data => {
+d3.csv('sample_city.csv').then(data => {
   data.forEach(row => {
     const lat = findCoord(row, latKeys);
     const lon = findCoord(row, lonKeys);
